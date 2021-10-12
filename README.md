@@ -4,13 +4,14 @@
 
 | Column              | Type       | Options     |
 |---------------------|------------|-------------|
-| nick name           | string     | null:false  |
-| user_password       | string     | null:false  |
+| nick_name           | string     | null:false  |
+| email               | string     | null:false  |
+| encrypted_password  | string     | null:false  |
 | first_name          | string     | null:false  |
 | family_name         | string     | null:false  |
 | first_name_kana     | string     | null:false  |
 | family_name_kana    | string     | null:false  |
-| birth_date          | string     | null:false  |
+| birth_date          | date       | null:false  |
 
 
 
@@ -23,39 +24,42 @@
 
  | Column             | Type       | Options     |
  |--------------------|------------|-------------|
- | image              | string     | null:false  |
+ | name               | string     | null:false  |
  | discription        | string     | null:false  |
- | judgment           | string     | null:false  |
- | status             | string     | null:false  |
- | cost               | string     | null:false  |
- | city               | string     | null:false  |
- | days               | string     | null:false  |
- | amount_sold        | string     | null:false  |
+ | status_id          | integer    | null:false  |
+ | cost_id            | integer    | null:false  |
+ | city_id            | integer    | null:false  |
+ | days_id            | integer    | null:false  |
+ | price              | string     | null:false  |
+ | user_id            | integer     | null:false,foreign_key: true  |
+
  
 
 ## Association
 - belongs_to :user
+- belongs_to :management
 
 
-##custmer
+##Adress
 | Column             | Type       | Options     |
 |--------------------|------------|-------------|
 | post_code          | string     | null:false  |
-| prefecture         | string     | null:false  |
+| prefecture_id      | integer    | null:false  |
 | city               | string     | null:false  |
 | adress             | string     | null:false  |
-| building_name      | string     | null:false  |
+| building_name      | string     |             |
 | phone_number       | string     | null:false  |
+| user_id            | integer    | null: false, foreign_key: true |
 
 ## Association
 - belongs_to :user
+- belongs_to :management
 
-##card
+##management
 | Column             | Type       | Options                       |
 |--------------------|------------|-------------------------------|
 | user_id            | integer    | null: false, foreign_key: true|
-| customer_id        | string     | null: false                   |
-| card_id            | string     | null: false                   |
+| items_id           | string     | null: false                   |
 
 ## Association
 - belongs_to :user
