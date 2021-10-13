@@ -17,8 +17,8 @@
 
 ### Association
 - has_many : items
-- belongs_to : custmer
-- belongs_to : card
+- belongs_to : adress
+- has_many : managemennt
 
  ##items
 
@@ -31,13 +31,13 @@
  | city_id            | integer    | null:false  |
  | days_id            | integer    | null:false  |
  | price              | string     | null:false  |
- | user_id            | integer     | null:false,foreign_key: true  |
+ | user            | references     | null:false,foreign_key: true  |
 
  
 
 ## Association
 - belongs_to :user
-- belongs_to :management
+- has_one :management
 
 
 ##Adress
@@ -52,14 +52,13 @@
 | user_id            | integer    | null: false, foreign_key: true |
 
 ## Association
-- belongs_to :user
-- belongs_to :management
+- has_one :management
 
 ##management
 | Column             | Type       | Options                       |
 |--------------------|------------|-------------------------------|
-| user_id            | integer    | null: false, foreign_key: true|
-| items_id           | string     | null: false                   |
+| user            | references    | null: false, foreign_key: true|
+| items           | references    | null: false                   |
 
 ## Association
 - belongs_to :user
