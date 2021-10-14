@@ -61,5 +61,5 @@
 
 ## Association
 - has_one :Adress
-- has_many :items
+- belongs_to :items
 - belongs_to :user
