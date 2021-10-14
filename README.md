@@ -1,11 +1,11 @@
 # README
 
-##user
+##users
 
 | Column              | Type       | Options     |
 |---------------------|------------|-------------|
 | nick_name           | string     | null:false  |
-| email               | string     | null:false  |
+| email               | string     | null:false,unique: true |
 | encrypted_password  | string     | null:false  |
 | first_name          | string     | null:false  |
 | family_name         | string     | null:false  |
@@ -17,8 +17,7 @@
 
 ### Association
 - has_many : items
-- belongs_to : adress
-- has_many : managemennt
+- has_many : managemennts
 
  ##items
 
@@ -28,11 +27,11 @@
  | discription        | string     | null:false  |
  | status_id          | integer    | null:false  |
  | cost_id            | integer    | null:false  |
- | city_id            | integer    | null:false  |
- | days_id            | integer    | null:false  |
+ | prefecture_id            | integer    | null:false  |
+ | shipping_day_id     | integer    | null:false  |
  | price              | string     | null:false  |
  | user            | references     | null:false,foreign_key: true  |
-
+ | category           | string     | null:false  |
  
 
 ## Association
@@ -49,16 +48,16 @@
 | adress             | string     | null:false  |
 | building_name      | string     |             |
 | phone_number       | string     | null:false  |
-| user_id            | integer    | null: false, foreign_key: true |
+| management_id            | integer    | null: false, foreign_key: true |
 
 ## Association
-- has_one :management
+- belongs_to :management
 
-##management
+##managements
 | Column             | Type       | Options                       |
 |--------------------|------------|-------------------------------|
 | user            | references    | null: false, foreign_key: true|
 | items           | references    | null: false                   |
 
 ## Association
-- belongs_to :user
+- belongs_to :Adress
