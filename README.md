@@ -24,12 +24,12 @@
  | Column             | Type       | Options     |
  |--------------------|------------|-------------|
  | name               | string     | null:false  |
- | discription        | string     | null:false  |
+ | discription        | text     | null:false  |
  | status_id          | integer    | null:false  |
  | cost_id            | integer    | null:false  |
  | prefecture_id            | integer    | null:false  |
  | shipping_day_id     | integer    | null:false  |
- | price              | string     | null:false  |
+ | price              | integer     | null:false  |
  | user            | references     | null:false,foreign_key: true  |
  | category_id           | integer     | null:false  |
  
@@ -39,7 +39,7 @@
 - has_one :management
 
 
-##Adress
+##Adresses
 | Column             | Type       | Options     |
 |--------------------|------------|-------------|
 | post_code          | string     | null:false  |
@@ -48,7 +48,7 @@
 | adress             | string     | null:false  |
 | building_name      | string     |             |
 | phone_number       | string     | null:false  |
-| management_id            | integer    | null: false, foreign_key: true |
+| management_id            | references    | null: false, foreign_key: true |
 
 ## Association
 - belongs_to :management
@@ -57,9 +57,9 @@
 | Column             | Type       | Options                       |
 |--------------------|------------|-------------------------------|
 | user            | references    | null: false, foreign_key: true|
-| item           | references    | null: false                   |
+| item           | references    | null: false,foreign_key: true   |
 
 ## Association
-- has_one :Adress
-- belongs_to :items
+- has_one :adress
+- belongs_to :item
 - belongs_to :user
