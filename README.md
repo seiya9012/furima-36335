@@ -31,7 +31,7 @@
  | shipping_day_id     | integer    | null:false  |
  | price              | string     | null:false  |
  | user            | references     | null:false,foreign_key: true  |
- | category           | string     | null:false  |
+ | category_id           | integer     | null:false  |
  
 
 ## Association
@@ -57,7 +57,9 @@
 | Column             | Type       | Options                       |
 |--------------------|------------|-------------------------------|
 | user            | references    | null: false, foreign_key: true|
-| items           | references    | null: false                   |
+| item           | references    | null: false                   |
 
 ## Association
-- belongs_to :Adress
+- has_one :Adress
+- has_many :items
+- belongs_to :user
