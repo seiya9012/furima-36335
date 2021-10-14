@@ -48,7 +48,7 @@
 | adress             | string     | null:false  |
 | building_name      | string     |             |
 | phone_number       | string     | null:false  |
-| management_id            | references    | null: false, foreign_key: true |
+| management         | references    | null: false, foreign_key: true |
 
 ## Association
 - belongs_to :management
