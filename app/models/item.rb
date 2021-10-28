@@ -6,7 +6,6 @@ class Item < ApplicationRecord
     validates :discription
     validates :price, numericality: { only_integer: true, with: /\A[0-9]+\z/, greater_than_or_equal_to: 300,
                                       less_than_or_equal_to: 9_999_999 }
-    validates :images
   end
   with_options presence: true, numericality: { other_than: 1 } do
     validates :category_id
