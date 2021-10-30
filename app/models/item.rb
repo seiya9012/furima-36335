@@ -16,4 +16,9 @@ class Item < ApplicationRecord
   end
   has_one_attached :image
   belongs_to :user
+  belongs_to_active_hash :category
+  belongs_to_active_hash :status
+  belongs_to_active_hash :cost
+  belongs_to_active_hash :prefecture
+  belongs_to_active_hash :shipping_day
 end
