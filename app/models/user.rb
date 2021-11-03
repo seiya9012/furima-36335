@@ -20,5 +20,5 @@ class User < ApplicationRecord
   end
 
   has_many :items
-  has_many :managements
+  #has_many :managements
 end

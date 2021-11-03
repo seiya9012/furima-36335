@@ -15,7 +15,7 @@ class Item < ApplicationRecord
     validates :status_id
   end
   has_one_attached :image
-  has_one :management
+  #has_one :management
   belongs_to :user
   belongs_to_active_hash :category
   belongs_to_active_hash :status
