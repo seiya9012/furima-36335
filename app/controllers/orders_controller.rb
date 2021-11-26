@@ -35,7 +35,7 @@ item_id: params[:item_id],token: params[:token] )
   end
 
   def pay_item
-    Payjp.api_key = "sk_test_467eca678e42ca06202341e7"
+    Payjp.api_key = ENV["PAYJP_SECRET_KEY"]
     Payjp::Charge.create(
       amount: @item.price,
       card: order_params[:token],
