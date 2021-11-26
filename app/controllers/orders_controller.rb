@@ -1,0 +1,45 @@
+class OrdersController < ApplicationController
+
+  before_action :authenticate_user!, only: [:index, :create]
+  before_action :find_item, only: [:index, :create]
+  before_action :move_to_root_path, only: [:index, :create]
+  
+
+  def index
+    @order = Order.new
+  end
+
+  def create
+    @order = Order.new(order_params)
+    if @order.valid?
+      pay_item
+      @order.save
+      redirect_to root_path
+    else
+      render action: :index
+    end
+  end
+
+  private
+  def find_item
+    @item = Item.find(params[:item_id])
+  end
+
+  def order_params
+    params.require(:order).permit(:post_code, :prefecture_id, :city, :adress, :building_name, :phone_number).merge(user_id: current_user.id,
+item_id: params[:item_id],token: params[:token] )
+  end
+
+  def move_to_root_path
+    redirect_to root_path if current_user.id == @item.user.id || @item.management != nil
+  end
+
+  def pay_item
+    Payjp.api_key = "sk_test_467eca678e42ca06202341e7"
+    Payjp::Charge.create(
+      amount: @item.price,
+      card: order_params[:token],
+      currency: 'jpy'
+    )
+  end
+end
