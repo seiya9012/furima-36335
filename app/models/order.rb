@@ -12,8 +12,7 @@ class Order
     validates :prefecture_id,   numericality: { other_than: 1 }
     validates :city
     validates :adress
-    validates :phone_number, numericality: { only_integer: true }
-    validates :phone_number, format: { with: /\A\d{10,11}\z/}
+    validates :phone_number, numericality: { only_integer: true },format: { with: /\A\d{10,11}\z/}
     validates :token
   end
  
